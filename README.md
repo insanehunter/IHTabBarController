@@ -15,6 +15,7 @@ image footprint and improve readability.
 * Add IHTabBarController/Sources directory to your project.
 * Create IHTabBarController in your AppDelegate and add some ViewControllers to it:
 
+    ```objective-c
     _tabBarController = [[IHTabBarController alloc] init];
     _tabBarController.viewControllers = [NSArray arrayWithObjects:
                                             [[[UIViewController alloc] init] autorelease],
@@ -23,6 +24,7 @@ image footprint and improve readability.
                                                     [[[UIViewController alloc] init] autorelease]] autorelease],
                                            			nil];
     [_window addSubview:_tabBarController.view];
+    ```
 
 * Add `- (UIImage *) tabBarImage` method to all your ViewControllers
 
