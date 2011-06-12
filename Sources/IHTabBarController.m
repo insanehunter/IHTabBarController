@@ -146,11 +146,10 @@
     NSParameterAssert(vc != nil);
     NSAssert([_viewControllers indexOfObject:vc] != NSNotFound, nil);
     
-    UIViewController *oldVC = [[_selectedViewController_weakref retain] autorelease];
+    UIViewController *oldVC = _selectedViewController_weakref;
     if (oldVC != vc)
     {
-        [_selectedViewController_weakref release];
-        _selectedViewController_weakref = [vc retain];
+        _selectedViewController_weakref = vc;
         if (_visible)
         {
             [oldVC viewWillDisappear:NO];
