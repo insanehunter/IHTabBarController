@@ -17,8 +17,8 @@
 
 #pragma mark -
 @implementation IHTabBarController
-@synthesize tabBar = _tabBar;
-@synthesize tabBarView = _tabBarView;
+@synthesize tabBar = _tabBar_weakref;
+@synthesize tabBarView = _tabBarView_weakref;
 @synthesize viewControllers = _viewControllers;
 @synthesize selectedViewController = _selectedViewController_weakref;
 @dynamic selectedIndex;
@@ -26,8 +26,8 @@
 #pragma mark Initialization & deallocation
 - (void) loadView
 {
-    NSAssert(_tabBarView == nil, nil);
-    NSAssert(_tabBar == nil, nil);
+    NSAssert(_tabBarView_weakref == nil, nil);
+    NSAssert(_tabBar_weakref == nil, nil);
     
     CGRect frame = [[UIScreen mainScreen] applicationFrame];
     _tabBarView_weakref = [[[IHTabBarView alloc] initWithFrame:frame] autorelease];
