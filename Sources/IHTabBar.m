@@ -6,6 +6,7 @@
 #import "IHTabBarItem.h"
 
 // All IHTabBarController resources are managed by IHTabBar.
+#define IHTABBAR_SHOW_ARROW                 0
 #define IHTABBAR_BUNDLE                     @"IHTabBarController.bundle/"
 #define IHTABBAR_BACKGROUND_ASSET           (IHTABBAR_BUNDLE @"background.png")
 #define IHTABBAR_ARROW_ASSET                (IHTABBAR_BUNDLE @"arrow.png")
@@ -31,6 +32,7 @@
     _backgroundImage = [[self imageWithContentsOfFile:backgroundImagePath] retain];
     NSAssert(_backgroundImage != nil, nil);
     
+#if IHTABBAR_SHOW_ARROW
     // Arrow
     UIImage *arrowImage = [self imageWithContentsOfFile:
                                     [bundlePath stringByAppendingPathComponent:IHTABBAR_ARROW_ASSET]];
@@ -40,6 +42,7 @@
     rect.origin.y = -(rect.size.height - 2);
     _arrowImageView.frame = rect;
     [self addSubview:_arrowImageView];
+#endif // IHTABBAR_SHOW_ARROW
     
     // Item images
     NSString *selectionImagePath = [bundlePath stringByAppendingPathComponent:IHTABBAR_ITEM_BACKGROUND_ASSET];
@@ -76,6 +79,7 @@
 
 - (void) positionArrowAnimated:(BOOL)animated
 {
+#if IHTABBAR_SHOW_ARROW
     if (animated)
     {
         [UIView beginAnimations:nil context:NULL];
@@ -88,6 +92,7 @@
     
     if (animated)
         [UIView commitAnimations];
+#endif // IHTABBAR_SHOW_ARROW
 }
 
 
